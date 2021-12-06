@@ -1,0 +1,7 @@
+So this one kicked my ass.  I ended it up solving it the dumbest way possible,
+which works, because it's limited to angles that are multiples of 45 degrees.
+In the more general case, I'd have to actually get the math to work.
+
+lines.py and diagonallines.py are what I was going for. lines.py works, but
+diagonallines.py doesn't. I ended up using dumb.py to solve part 2, and went
+back and copied it over for part 1 as well.
