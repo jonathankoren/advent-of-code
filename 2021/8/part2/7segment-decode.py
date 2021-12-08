@@ -95,7 +95,7 @@ with open(sys.argv[1]) as infile:
 
         # uniquely, one has 2 segments
         # uniquely, seven has 3 segments
-        # one and seven differ by the canonical a segment
+        # one and seven differ by the canonical segment a
         one_pattern = find_patterns_of_size(patterns, 2)[0]
         seven_pattern = find_patterns_of_size(patterns, 3)[0]
         input_to_canonical_a = list(set(seven_pattern) - set(one_pattern))[0]
@@ -108,15 +108,16 @@ with open(sys.argv[1]) as infile:
                 input2canonical[ic] = 'c'
 
         # The only segments not decoded are d and g
-        # We figure out what input characters aren't decoded. Zero is the only
-        # 6 segment pattern that will have exactly one undecoded segment.
-        # That's one is d. The other is g.
-        # uniqely, eight is the only pattern with 7 segments
+        # Zero is the only 6 segment that pattern that has d off, and g on.
+        # uniqely, eight is the only pattern with all 7 segments
         eight_pattern = find_patterns_of_size(patterns, 7)[0]
         for size_6_pattern in find_patterns_of_size(patterns, 6):
             missing_segment = list(set(eight_pattern) - set(size_6_pattern))[0]
             if missing_segment not in input2canonical:
                 input2canonical[missing_segment] = 'd'
+                break
+
+        # The only one left to decode is g
         canonical_g = list(set(eight_pattern) - set(input2canonical.keys()))[0]
         input2canonical[canonical_g] = 'g'
 
